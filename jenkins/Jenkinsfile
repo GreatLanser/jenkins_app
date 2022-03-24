@@ -9,7 +9,7 @@ pipeline {
             agent {
                 docker {
                     image 'node:lts-buster-slim'
-                    args '-p 30:30 -d jenkins_container'
+                    args '-p 30:30 -d'
                     reuseNode true
                 }
             }
