@@ -1,18 +1,16 @@
 pipeline {
-    agent any
+    agent {
+        docker{
+            image 'node:lts-buster-slim'
+            args '-p 3000:3000 -d'
+        }
+    }
     environment {
         CI = 'true'
         HOME = '.'
     }
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:lts-buster-slim'
-                    args '-p 30:30 -d'
-                    reuseNode true
-                }
-            }
             steps {
                 sh 'npm install'
             }
